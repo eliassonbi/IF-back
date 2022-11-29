@@ -6,9 +6,12 @@ if (typeof web3 !== 'undefined') {
   var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
 }
 
+
 function routes(app, db, accounts, contactList) {
+
   
-    app.get('/contacts', async (request, response) => {
+
+ /*   app.get('/contacts', async (request, response) => {
             let cache = [];
        
             const COUNTER = await contactList.methods.count().call();
@@ -16,9 +19,9 @@ function routes(app, db, accounts, contactList) {
             for (let i = 1; i <= COUNTER; i++) {
   const contact = await contactList.methods.contacts(i).call();
   cache = [...cache, contact];
-}
+} 
 response.json(cache);
-});
+});*/
 
 app.post('/amount', async (request, response) => {
 
@@ -45,9 +48,10 @@ web3.eth.sendTransaction({
 app.get('/address', async (request, response) => {
   let cache = [];
 
+  //let kwatt = await contactList.methods.setKwatt(accounts[i]).call()
   for (let i = 0; i < accounts.length; i++) {
     const address = accounts[i];
-    cache = [...cache, address];
+    cache = [...cache, {add: address, kwatt: 1} ];
   }
   response.json(cache);
 

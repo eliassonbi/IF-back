@@ -26,149 +26,173 @@ mongodb.connect('mongodb://127.0.0.1:27017/blockchain-node-api',
         const bdd =client.db('Cluster0');
         const accounts = await web3.eth.getAccounts();
         console.log(CONTACT_ABI.CONTACT_ADDRESS);
-        const contactList = new web3.eth.Contract([
-                {
-                        "inputs": [
-                                {
-                                        "internalType": "address",
-                                        "name": "",
-                                        "type": "address"
-                                }
-                        ],
-                        "name": "balanceOf",
-                        "outputs": [
-                                {
-                                        "internalType": "uint256",
-                                        "name": "",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "stateMutability": "view",
-                        "type": "function"
-                },
-                {
-                        "inputs": [
-                                {
-                                        "internalType": "uint256",
-                                        "name": "",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "name": "contacts",
-                        "outputs": [
-                                {
-                                        "internalType": "uint256",
-                                        "name": "id",
-                                        "type": "uint256"
-                                },
-                                {
-                                        "internalType": "string",
-                                        "name": "name",
-                                        "type": "string"
-                                },
-                                {
-                                        "internalType": "string",
-                                        "name": "phone",
-                                        "type": "string"
-                                }
-                        ],
-                        "stateMutability": "view",
-                        "type": "function"
-                },
-                {
-                        "inputs": [],
-                        "name": "count",
-                        "outputs": [
-                                {
-                                        "internalType": "uint256",
-                                        "name": "",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "stateMutability": "view",
-                        "type": "function"
-                },
-                {
-                        "inputs": [
-                                {
-                                        "internalType": "string",
-                                        "name": "_name",
-                                        "type": "string"
-                                },
-                                {
-                                        "internalType": "string",
-                                        "name": "_phone",
-                                        "type": "string"
-                                }
-                        ],
-                        "name": "createContact",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                },
-                {
-                        "inputs": [],
-                        "name": "getBalance",
-                        "outputs": [
-                                {
-                                        "internalType": "uint256",
-                                        "name": "",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "stateMutability": "view",
-                        "type": "function"
-                },
-                {
-                        "inputs": [],
-                        "name": "getSender",
-                        "outputs": [
-                                {
-                                        "internalType": "address",
-                                        "name": "",
-                                        "type": "address"
-                                }
-                        ],
-                        "stateMutability": "view",
-                        "type": "function"
-                },
-                {
-                        "inputs": [
-                                {
-                                        "internalType": "address payable",
-                                        "name": "_to",
-                                        "type": "address"
-                                },
-                                {
-                                        "internalType": "uint256",
-                                        "name": "_amount",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "name": "sendViaCall",
-                        "outputs": [],
-                        "stateMutability": "payable",
-                        "type": "function"
-                },
-                {
-                        "inputs": [
-                                {
-                                        "internalType": "address",
-                                        "name": "_to",
-                                        "type": "address"
-                                },
-                                {
-                                        "internalType": "uint256",
-                                        "name": "_value",
-                                        "type": "uint256"
-                                }
-                        ],
-                        "name": "transfer",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                }
-        ], '0xC33838a7e408E671a16a7290A5D8bbF0C42bFd31');
+        const contactList = new web3.eth.Contract(
+                [
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "add",
+                                                "type": "address"
+                                        }
+                                ],
+                                "name": "getCo2",
+                                "outputs": [
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "add",
+                                                "type": "address"
+                                        }
+                                ],
+                                "name": "getKwatt",
+                                "outputs": [
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "add1",
+                                                "type": "address"
+                                        },
+                                        {
+                                                "internalType": "address",
+                                                "name": "add2",
+                                                "type": "address"
+                                        },
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "value",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "name": "sendEthForKwatt",
+                                "outputs": [],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "add",
+                                                "type": "address"
+                                        },
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "value",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "name": "setCo2",
+                                "outputs": [],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "add",
+                                                "type": "address"
+                                        },
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "value",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "name": "setKwatt",
+                                "outputs": [],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "",
+                                                "type": "address"
+                                        }
+                                ],
+                                "name": "co2",
+                                "outputs": [
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [],
+                                "name": "count",
+                                "outputs": [
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [],
+                                "name": "getSender",
+                                "outputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "",
+                                                "type": "address"
+                                        }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                        },
+                        {
+                                "inputs": [
+                                        {
+                                                "internalType": "address",
+                                                "name": "",
+                                                "type": "address"
+                                        }
+                                ],
+                                "name": "kwatt",
+                                "outputs": [
+                                        {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                        }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                        }
+                ], "0x65d70eb12939e5154EB0de7e626C190b8c9aBD43");
+        for (let i = 0; i < accounts.length; i++) {
+                        await contactList.methods.setKwatt(accounts[i], 50).call();
+        }
         routes(app, bdd, accounts, contactList);
 
         app.listen(process.env.PORT || 3001, () => {
