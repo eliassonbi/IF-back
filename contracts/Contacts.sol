@@ -6,6 +6,11 @@ contract ContractIF {
   mapping(address => uint ) public kwatt;
   mapping(address => uint ) public co2;
 
+  event Confirmation(address indexed _seller, address indexed _buyer, uint _valueCo2, uint _valueKwatt, uint _valueEuro);
+   function confirmation(address _seller, address _buyer, uint _valueCo2, uint _valueKwatt, uint _valueEuro) public {      
+      emit Confirmation( _seller, _buyer, _valueCo2, _valueKwatt, _valueEuro);
+   }
+
      function getSender() public view
             returns (address)
     {
@@ -20,11 +25,11 @@ contract ContractIF {
         co2[add] = value;
     }
 
-    function getCo2(address add) public returns (uint){
+    function getCo2(address add) public view returns (uint){
         return co2[add];
     }
 
-    function getKwatt(address add) public returns (uint){
+    function getKwatt(address add) public view returns (uint){
         return kwatt[add];
     }
 
